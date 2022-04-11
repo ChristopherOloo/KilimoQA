@@ -2,7 +2,7 @@
 <!--DOCTYPE html-->
 <html>
 <head>
-<title>Ask Questions</title>
+<title>Kilimo QA</title>
 <link rel='stylesheet' href='{% static "css/login.css" %}'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" href="{% static 'image/KilimoLogo.png' %}">
@@ -16,7 +16,7 @@
 		<div class="search">
 		</div>
 		<div class="navlinks">
-			<h6><a href="{% url "home" %}">Home</a></h6> <h6 style="width: 30%;"><a href="{% url "create" %}">Ask a Question</a></h6> <h6><a href="{% url "profile" id=1 %}">Profile</a></h6> <h6><a href="{% url "user" %}">Users</a></h6> <h6><a href="{% url "contactus" %}">Contact Us</a></h6>
+			<h6><a href="{% url "home" %}">Home</a></h6> <h6 style="width: 30%;"><a href="{% url "create" %}">Ask a Question</a></h6> <h6><a href="{% url "profile" id=1 %}">Profile</a></h6> <h6><a href="{% url "user" %}">Users</a></h6>
 		</div>
 		<div class="login" style="font-size: 15px;">
 			{% if request.user.is_authenticated %}

@@ -19,5 +19,5 @@ urlpatterns = [
 	url(r'^downvote/(?P<id>\d+)/$', views.vote_down,name='down'),
 	url(r'^profile/(?P<id>\d+)/$', views.profile,name='profile'),
 	url(r'^profileupdate/(?P<id>\d+)/$', views.Update_pro,name='profile_update'),
-	url(r'^users$',views.User_list, name='user'),
+	url(r'^users$',views.User_list, name='user'),	
 	]

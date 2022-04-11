@@ -24,7 +24,6 @@ from Project.settings import BASE_DIR
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('^contact/', include('contactus.urls')),
     url(r'^', include(urls))
 ]
 

@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Main',
-    'contactus',
 ]
 
 MIDDLEWARE = [
@@ -130,5 +129,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 LOGIN_URL = '/login/'
-
-CONTACT_US_EMAIL = 'ogudechris08@gmail.com'
