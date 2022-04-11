@@ -1,0 +1,110 @@
+{% comment %} {% block title %}Contact Us{% endblock %} {% endcomment %}
+
+{% load static %}
+<!--DOCTYPE html-->
+<html>
+<head>
+<title>Ask Questions</title>
+<link rel='stylesheet' href='{% static "css/index.css" %}'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="{% static 'image/KilimoLogo.png' %}">
+</head>
+
+<body>
+	<div class="navbar">
+		<div class="logo">
+			<img src='{% static "image/KilimoLogo.png" %}' style="width: 230px; margin-top: 10px;" />
+		</div>
+		<div class="search">
+			<div style="margin-top: 22px; margin-left: 22.5%;">
+			<form method='GET' action=''>
+			<input type='text' name='q' placeholder='Search questions' value='{{request.GET.q }}' id="search1"/>
+
+			<button type='submit' id="search2"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</form>
+			</div>
+		</div>
+		<div class="navlinks">
+            {% comment %} Removed {% endcomment %}
+            {% comment %} <h6><a href="{% url "profile" id=profile.id %}">Profile</a></h6> {% endcomment %}
+			<h6><a href="{% url "home" %}">Home</a></h6> <h6 style="width: 30%;"><a href="{% url "create" %}">Ask a Question</a></h6>  <h6><a href="{% url "user" %}">Users</a></h6> <h6><a href="{% url "contactus" %}">Contact Us</a></h6>
+		</div>
+		<div class="login" style="font-size: 15px;">
+			{% if request.user.is_authenticated %}
+			<p><a href="{% url "logout" %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></p>
+			{% else %}
+			<p><a href="{% url "login" %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in / Register</a></p>
+			{%endif %}
+		</div>
+	</div>
+
+{% block css %}
+    <style>
+    .form-group .help-block {
+        display: none;
+    }
+    .form-group.has-error .help-block {
+        display: block;
+    }
+    input[name='decoy'],
+    p.decoy {
+        display: none !important;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="contact_us_form">
+        <h2 class="title">Contact Us</h2>
+        <br />
+        <form action="." method="post" name="feedback" class="form-horizontal">{% csrf_token %}
+            <div class="form-group {% if form.name.errors %}has-error{% endif %}">
+                <label for="id_name" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-6">
+                    <input type="text" name="name" class="form-control"
+                           id="id_name"
+                           value="{% if form.data.name %}{{form.data.name}}{% else %}{{form.initial.name}}{% endif %}" />
+                    <p class="help-block">Name is a required field</p>
+                </div>
+            </div>    
+            <div class="visualclear"></div>
+            <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                <label for="id_email" class="col-sm-2 control-label">E-mail Address</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="email"
+                           id="id_email"
+                           value="{% if form.data.email %}{{form.data.email}}{% else %}{{form.initial.email}}{% endif %}" />
+                    <div class="visualclear"></div>                
+                    <p class="help-block">A valid e-mail address is required.</p>
+                </div>
+            </div>
+            <br />
+            <div class="visualclear"></div>
+            <div class="form-group {% if form.subject.errors %}has-error{% endif %}">
+                <label for="id_subject"  class="col-sm-2 control-label">Subject</label>
+                <div class="col-sm-6">
+                    {{form.subject}}
+                    <p class="help-block">Subject is a required field.</p>
+                </div>
+            </div>
+            <br />
+            <div class="form-group {% if form.description.errors %}has-error{% endif %}">
+                <label for="id_description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-6">
+                    {{form.description}}
+                    <p class="help-block">Description is a required field.</p>
+                </div>
+            </div>
+            <div class="form-group {% if form.decoy.errors %}has-error{% endif %}">
+                <input type="text" name="decoy" value="" placeholder="Please leave blank" autofill="off" />
+                <p class="help-block decoy">If you can see the decoy field, please leave it blank.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <input class="btn btn-primary pull-right" type="submit" value="Send Feedback"/>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

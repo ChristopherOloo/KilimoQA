@@ -5,13 +5,13 @@
 <title>Ask Questions</title>
 <link rel='stylesheet' href='{% static "css/user.css" %}'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" href="{% static 'image/logo1.ico' %}">
+<link rel="icon" href="{% static 'image/KilimoLogo.png' %}">
 </head>
 
 <body>
 	<div class="navbar">
 		<div class="logo">
-			<img src='{% static "image/Logo.jpg" %}' style="width: 230px; margin-top: 10px;" />
+			<img src='{% static "image/KilimoLogo.png" %}' style="width: 230px; margin-top: 10px;" />
 		</div>
 		<div class="search">
 			<div style="margin-top: 22px; margin-left: 22.5%;">
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="navlinks">
-			<h6><a href="{% url "home" %}">Home</a></h6> <h6 style="width: 30%;"><a href="{% url "create" %}">Ask a Question</a></h6> <h6><a href="{% url "profile" id=profile.id %}">Profile</a></h6> <h6><a href="{% url "user" %}">Users</a></h6> <h6><a>Contact</a></h6>
+			<h6><a href="{% url "home" %}">Home</a></h6> <h6 style="width: 30%;"><a href="{% url "create" %}">Ask a Question</a></h6> <h6><a href="{% url "profile" id=profile.id %}">Profile</a></h6> <h6><a href="{% url "user" %}">Users</a></h6> <h6><a href="{% url "contactus" %}">Contact Us</a></h6>
 		</div>
 		<div class="login" style="font-size: 15px;">
 			{% if request.user.is_authenticated %}
